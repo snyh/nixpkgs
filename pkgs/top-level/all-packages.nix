@@ -17231,6 +17231,11 @@ with pkgs;
     callPackage = newScope pkgs.enlightenment;
   });
 
+  dde = recurseIntoAttrs (callPackage ../desktops/dde {
+    callPackage = newScope pkgs.dde;
+  });
+
+
   gnome2 = recurseIntoAttrs (callPackage ../desktops/gnome-2 {
     callPackage = pkgs.newScope pkgs.gnome2;
     self = pkgs.gnome2;
