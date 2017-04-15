@@ -15,13 +15,14 @@ stdenv.mkDerivation rec {
   buildInputs = [ gobjectIntrospection libgudev ];
 
   buildPhase = ''
-    export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/gocode
+    export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/go
     make
+    make copyfile
   '';
 
   installPhase = ''
-     mkdir -p $out/share/gocode/src/
-     cp -r out/src/gir $out/share/gocode/src
+     mkdir -p $out/share/go/src/
+     cp -r out/src/gir $out/share/go/src
   '';
 
   meta = {

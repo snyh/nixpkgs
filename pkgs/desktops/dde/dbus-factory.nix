@@ -20,8 +20,8 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    mkdir -p $out/share/gocode/src/dbus
-    cp -rf in.json/go/src/dbus/* $out/share/gocode/src/dbus/
+    mkdir -p $out/share/go/src/dbus
+    cp -rf in.json/go/src/dbus/* $out/share/go/src/dbus/
   '';
 
   meta = {
