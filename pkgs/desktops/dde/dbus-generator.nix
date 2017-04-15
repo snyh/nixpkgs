@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ unzip pkgconfig go dde-go-lib ];
 
   buildPhase = ''
-     export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/gocode
+     export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/go
      make
   '';
 

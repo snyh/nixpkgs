@@ -1,4 +1,7 @@
-{ stdenv, unzip, fetchFromGitHub, pkgconfig, gtk3, cmake, gettext, go, dde-go-lib, dde-dbus-factory, go-gir-generator }:
+{ stdenv, unzip, fetchFromGitHub, pkgconfig, gtk3, cmake, gettext, go,
+  dde-go-lib, dde-dbus-factory, go-gir-generator, go-xgb, go-xgbutil,
+  go-fsnotify
+}:
 
 stdenv.mkDerivation rec {
   name = "startdde-${version}";
@@ -12,11 +15,16 @@ stdenv.mkDerivation rec {
   };
 
   buildPhase = ''
-     export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/gocode:${dde-dbus-factory}/share/gocode:${go-gir-generator}/share/gocode
-     make
+    export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/go
+    export GOPATH=$GOPATH:${dde-dbus-factory}/share/go
+    export GOPATH=$GOPATH:${go-gir-generator}/share/go
+    export GOPATH=$GOPATH:${go-xgb.out}/share/go
+    export GOPATH=$GOPATH:${go-xgbutil.out}/share/go
+    export GOPATH=$GOPATH:${go-fsnotify.out}/share/go
+    make
   '';
 
-  nativeBuildInputs = [ unzip gtk3 pkgconfig gettext go dde-go-lib go-gir-generator];
+  nativeBuildInputs = [ unzip gtk3 pkgconfig gettext go dde-go-lib go-gir-generator go-xgb];
 
   meta = {
     description = "The session manager of dde";

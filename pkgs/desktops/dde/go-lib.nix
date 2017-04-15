@@ -14,8 +14,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ unzip glib pkgconfig gettext libpulseaudio go ];
 
   installPhase = ''
-    mkdir -p $out/share/gocode/src/pkg.deepin.io/lib
-    cp -r * $out/share/gocode/src/pkg.deepin.io/lib
+    mkdir -p $out/share/go/src/pkg.deepin.io/lib
+    cp -r * $out/share/go/src/pkg.deepin.io/lib
   '';
 
   meta = {
