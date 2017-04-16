@@ -1,7 +1,7 @@
 { stdenv, unzip, fetchFromGitHub, pkgconfig, dde-dbus-generator, go }:
 
 stdenv.mkDerivation rec {
-  name = "dde-dbus-factory-${version}";
+  name = "go-dde-dbus-factory-${version}";
   version = "3.1.4";
 
   src = fetchFromGitHub {
