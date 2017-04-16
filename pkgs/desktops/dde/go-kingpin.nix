@@ -13,5 +13,7 @@ buildGoPackage rec {
     sha256 = "1llh2m1awbp71n5fqxgkiwvw2q0wqnxrbzpkivybpmbsdvp0k4mn";
   };
 
+  installAllDeps = true;
+
   goDeps = ./go-kingpin.deps.nix;
 }
