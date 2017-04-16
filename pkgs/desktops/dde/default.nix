@@ -27,7 +27,8 @@ rec {
   };
 
   dde-go-lib = callPackage ./go-lib.nix {};
-  go-dde-dbus-factory = callPackage ./dbus-factory.nix {};
+  go-dde-dbus-factory = callPackage ./go-dde-dbus-factory.nix {};
+  dde-qt-dbus-factory = callPackage ./dde-qt-dbus-factory.nix {};
   go-xgb = callPackage ./go-xgb.nix {};
   go-fsnotify = callPackage ./go-fsnotify.nix {};
   go-xgbutil = callPackage ./go-xgbutil.nix {};
@@ -38,6 +39,18 @@ rec {
 
   ### the session manager
   startdde = callPackage ./startdde.nix {};
+
+  gsettings-qt = callPackage ./gsettings-qt.nix {
+  };
+
+  deepin-tool-kit = callPackage ./deepin-tool-kit.nix {
+    startup-notification = pkgs.gnome2.startup_notification;
+  };
+  dtksettings = callPackage ./dtksettings.nix {};
+
+  dde-session-ui = callPackage ./dde-session-ui.nix {
+    gtk2 = pkgs.gtk2-x11;
+  };
 
 
   # ### the application store client
