@@ -8,6 +8,9 @@
 # Disabled flag
 , disabled ? false
 
+# Include depends package flag
+, installAllDeps ? false
+
 # Go import path of the package
 , goPackagePath
 
@@ -170,7 +173,7 @@ go.stdenv.mkDerivation (
     mkdir -p $out
     pushd "$NIX_BUILD_TOP/go"
     while read f; do
-      echo "$f" | grep -q '^./\(src\|pkg/[^/]*\)/${goPackagePath}' || continue
+      echo "$f" | grep -q '^./\(src\|pkg/[^/]*\)/${if installAllDeps then "" else goPackagePath}' || continue
       mkdir -p "$(dirname "$out/share/go/$f")"
       cp "$NIX_BUILD_TOP/go/$f" "$out/share/go/$f"
     done < <(find . -type f)
