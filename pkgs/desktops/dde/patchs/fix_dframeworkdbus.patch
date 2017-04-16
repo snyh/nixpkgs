@@ -1,0 +1,22 @@
+:100644 100644 be1b7e6... 0000000... M	libdframeworkdbus/libdframeworkdbus.pro
+
+diff --git a/libdframeworkdbus/libdframeworkdbus.pro b/libdframeworkdbus/libdframeworkdbus.pro
+index be1b7e6..efe7f13 100644
+--- a/libdframeworkdbus/libdframeworkdbus.pro
++++ b/libdframeworkdbus/libdframeworkdbus.pro
+@@ -71,13 +71,13 @@ SOURCES += \
+ include(generated/generated.pri)
+ 
+ isEmpty(LIB_INSTALL_DIR) {
+-    target.path = /usr/lib
++    target.path = $$INSTALL_ROOT/lib
+ } else {
+     target.path = $$LIB_INSTALL_DIR
+ }
+ 
+ includes.files =
+-includes.path = /usr/include/libdframeworkdbus-$$VERSION
++includes.path = $$INSTALL_ROOT/include/libdframeworkdbus-$$VERSION
+ 
+ type_headers.files =
+ type_headers.path = $$includes.path/types
