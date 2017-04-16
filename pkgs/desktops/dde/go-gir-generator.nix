@@ -1,4 +1,4 @@
-{ stdenv, unzip, fetchFromGitHub, pkgconfig, go, libgudev, gobjectIntrospection, dde-go-lib, dde-dbus-generator }:
+{ stdenv, unzip, fetchFromGitHub, pkgconfig, go, glib, libgudev, gobjectIntrospection, dde-go-lib, dde-dbus-generator }:
 
 stdenv.mkDerivation rec {
   name = "go-gir-generator-${version}";
@@ -12,7 +12,8 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ unzip pkgconfig dde-dbus-generator go dde-go-lib ];
-  buildInputs = [ gobjectIntrospection libgudev ];
+  propagatedBuildInputs = [ libgudev glib];
+  buildInputs = [ gobjectIntrospection ];
 
   buildPhase = ''
     export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/go

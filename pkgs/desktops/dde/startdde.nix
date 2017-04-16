@@ -1,6 +1,7 @@
 { stdenv, unzip, fetchFromGitHub, pkgconfig, gtk3, cmake, gettext, go,
-  dde-go-lib, dde-dbus-factory, go-gir-generator, go-xgb, go-xgbutil,
-  go-fsnotify
+  dde-go-lib, go-dde-dbus-factory, go-gir-generator, go-xgb, go-xgbutil,
+  go-fsnotify, dde-api,
+  libcanberra_gtk3
 }:
 
 stdenv.mkDerivation rec {
@@ -16,15 +17,21 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
     export GOPATH=$GOPATH:${dde-go-lib.outPath}/share/go
-    export GOPATH=$GOPATH:${dde-dbus-factory}/share/go
+    export GOPATH=$GOPATH:${go-dde-dbus-factory}/share/go
     export GOPATH=$GOPATH:${go-gir-generator}/share/go
     export GOPATH=$GOPATH:${go-xgb.out}/share/go
     export GOPATH=$GOPATH:${go-xgbutil.out}/share/go
     export GOPATH=$GOPATH:${go-fsnotify.out}/share/go
+    export GOPATH=$GOPATH:${dde-api.out}/usr/share/gocode
     make
   '';
 
-  nativeBuildInputs = [ unzip gtk3 pkgconfig gettext go dde-go-lib go-gir-generator go-xgb];
+  nativeBuildInputs = [ unzip gtk3 pkgconfig gettext go dde-go-lib go-gir-generator go-xgb libcanberra_gtk3 ];
+
+  installPhase = ''
+    DESTDIR=$out make install
+  '';
+
 
   meta = {
     description = "The session manager of dde";
