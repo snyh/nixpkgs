@@ -1,0 +1,20 @@
+diff --git a/libdui.pro b/libdui.pro
+index 5940190..9baae4d 100644
+--- a/libdui.pro
++++ b/libdui.pro
+@@ -21,13 +21,13 @@ CONFIG += c++11 create_pc create_prl no_install_prl
+ HEADERS += libdui_global.h
+ 
+ isEmpty(LIB_INSTALL_DIR) {
+-    target.path = /usr/lib
++    target.path = $$INSTALL_ROOT/lib
+ } else {
+     target.path = $$LIB_INSTALL_DIR
+ }
+ 
+ includes.files += libdui_global.h widgets/*.h
+-includes.path = /usr/include/libdui/
++includes.path = $$INSTALL_ROOT/include/libdui/
+ 
+ unix{
+     QT += x11extras dbus
