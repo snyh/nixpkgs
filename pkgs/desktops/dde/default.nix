@@ -56,6 +56,10 @@ rec {
     gtk2 = pkgs.gtk2-x11;
   };
 
+  dde-dock = callPackage ./dde-dock.nix {
+    libXtst = pkgs.xorg.libXtst;
+  };
+
 
   # ### the application store client
   # deepin-appstore = callPackages ./deepin-appstore.nix {

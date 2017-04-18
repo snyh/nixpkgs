@@ -1,0 +1,32 @@
+diff --git a/frame/frame.pro b/frame/frame.pro
+index 3d31c43..a66188a 100644
+--- a/frame/frame.pro
++++ b/frame/frame.pro
+@@ -71,12 +71,12 @@ HEADERS  += \
+     item/components/previewwidget.h
+ 
+ dbus_service.files += com.deepin.dde.Dock.service
+-dbus_service.path = /usr/share/dbus-1/services
++dbus_service.path = $${PREFIX}/share/dbus-1/services
+ 
+ headers.files 	+= ../interfaces/constants.h \
+ 		../interfaces/pluginproxyinterface.h \
+ 		../interfaces/pluginsiteminterface.h
+-headers.path	= /usr/include/dde-dock
++headers.path	= $${PREFIX}/include/dde-dock
+ 
+ target.path = $${PREFIX}/bin/
+ INSTALLS += target dbus_service headers
+diff --git a/interfaces/interfaces.pri b/interfaces/interfaces.pri
+index 0fb8c89..15ed96e 100644
+--- a/interfaces/interfaces.pri
++++ b/interfaces/interfaces.pri
+@@ -8,8 +8,3 @@ HEADERS += \
+ SOURCES += \
+ 
+ INCLUDEPATH += $$PWD
+-
+-isEmpty(PREFIX)
+-{
+-    PREFIX = /usr
+-}
