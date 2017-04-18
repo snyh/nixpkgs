@@ -48,6 +48,10 @@ rec {
   };
   dtksettings = callPackage ./dtksettings.nix {};
 
+  libdui = callPackage ./libdui.nix {};
+
+  deepin-image-viewer = callPackage ./deepin-image-viewer.nix {};
+
   dde-session-ui = callPackage ./dde-session-ui.nix {
     gtk2 = pkgs.gtk2-x11;
   };
