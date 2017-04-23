@@ -60,6 +60,11 @@ rec {
     libXtst = pkgs.xorg.libXtst;
   };
 
+  dde-file-manager = callPackage ./dde-file-manager.nix {
+    libXtst = pkgs.xorg.libXtst;
+    polkit-qt = pkgs.libsForQt5.polkit-qt;
+  };
+
 
   # ### the application store client
   # deepin-appstore = callPackages ./deepin-appstore.nix {
