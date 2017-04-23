@@ -14,6 +14,7 @@ stdenv.mkDerivation rec {
     sha256 = "0kpia9v9k6w00vhjcwckbflsfvgb4blf8mfgkvhn5jx7qsgjiibf";
   };
 
+  outputs = [ "out" "dev" ];
   patches = [ ./patchs/fix_dde-dock.patch ];
 
   nativeBuildInputs = [ pkgconfig qt5.qtbase qt5.qmakeHook ];
