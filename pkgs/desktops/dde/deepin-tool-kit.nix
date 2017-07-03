@@ -1,22 +1,22 @@
 { stdenv, fetchFromGitHub,
   qt5, pkgconfig,
-  startup-notification, dtksettings,
+  startup-notification, dtksettings, gsettings-qt,
 }:
 
 stdenv.mkDerivation rec {
   name = "deepin-tool-kit-${version}";
-  version = "0.2.9";
+  version = "0.2.11";
 
   src = fetchFromGitHub {
     owner = "linuxdeepin";
     repo = "deepin-tool-kit";
     rev = version;
-    sha256 = "15ijcqq8a4r404d646cnc1fp3gs8z2vxzwpd70p9i62krnnwmysc";
+    sha256 = "0p4cdxnnk4rch0wgyyykhqq38wz1si3hpmscdmjv45i37pvs3gvl";
   };
 
-  nativeBuildInputs = [ pkgconfig qt5.qtbase qt5.qmakeHook startup-notification dtksettings ];
+  nativeBuildInputs = [ pkgconfig qt5.qtbase qt5.qmakeHook startup-notification dtksettings gsettings-qt ];
   buildInputs = [ qt5.qttools qt5.qtmultimedia qt5.qtx11extras ];
-
+  patches = [ ./patchs/dtkwidget.patch ];
   enableParallelBuilding = true;
 
   meta = {

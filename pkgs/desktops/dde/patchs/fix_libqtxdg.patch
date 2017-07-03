@@ -1,0 +1,18 @@
+diff --git a/cmake/create_pkgconfig_file.cmake b/cmake/create_pkgconfig_file.cmake
+index b218cef..c0c6e12 100644
+--- a/cmake/create_pkgconfig_file.cmake
++++ b/cmake/create_pkgconfig_file.cmake
+@@ -102,11 +102,11 @@ function(create_pkgconfig_file)
+     endif()
+ 
+     if (NOT DEFINED USER_INCLUDEDIR_PREFIX)
+-        set(_PKGCONFIG_INCLUDEDIR_PREFIX "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
++        set(_PKGCONFIG_INCLUDEDIR_PREFIX "\${prefix}/include")
+     endif()
+ 
+     if (NOT DEFINED USER_LIBDIR_PREFIX)
+-        set(_PKGCONFIG_LIBDIR_PREFIX "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
++        set(_PKGCONFIG_LIBDIR_PREFIX "\${prefix}/lib")
+     endif()
+ 
+     if (NOT DEFINED USER_DESCRIPTIVE_NAME)

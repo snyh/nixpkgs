@@ -43,9 +43,20 @@ rec {
   gsettings-qt = callPackage ./gsettings-qt.nix {
   };
 
+  libqtxdg = callPackage ./libqtxdg.nix {
+  };
+
+  dde-qt5integration = callPackage ./dde-qt5integration.nix {
+  };
+
   deepin-tool-kit = callPackage ./deepin-tool-kit.nix {
     startup-notification = pkgs.gnome2.startup_notification;
   };
+
+  deepin-appstore = callPackage ./deepin-appstore.nix {
+    libpthreadstubs = pkgs.xorg.libpthreadstubs;
+  };
+
   dtksettings = callPackage ./dtksettings.nix {};
 
   libdui = callPackage ./libdui.nix {};

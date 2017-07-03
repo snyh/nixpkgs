@@ -1,0 +1,32 @@
+From 254d3f35500384316b0a199d26f51710b54927d8 Mon Sep 17 00:00:00 2001
+From: zccrs <ccrr1314@live.com>
+Date: Mon, 03 Jul 2017 15:17:31 +0800
+Subject: [PATCH] Add the pkgconfig requires for dtkutil/dtkwidget
+
+Change-Id: I00af3b1696cb15b849e157d74bb651b59a51eaa1
+---
+
+diff --git a/dutil/dutil.pro b/dutil/dutil.pro
+index 877a24c..27cb401 100644
+--- a/dutil/dutil.pro
++++ b/dutil/dutil.pro
+@@ -45,6 +45,7 @@
+ QMAKE_PKGCONFIG_NAME = DTK_UTIL
+ QMAKE_PKGCONFIG_DESCRIPTION = Deepin Tool Kit Util Module
+ QMAKE_PKGCONFIG_INCDIR = $$includes.path
++QMAKE_PKGCONFIG_REQUIRES += dtkbase
+ 
+ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../dbase/release/ -ldtkbase
+ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../dbase/debug/ -ldtkbase
+diff --git a/dwidget/dwidget.pro b/dwidget/dwidget.pro
+index d244726..1681914 100644
+--- a/dwidget/dwidget.pro
++++ b/dwidget/dwidget.pro
+@@ -75,6 +75,7 @@
+ QMAKE_PKGCONFIG_NAME = DTK_WIDGET
+ QMAKE_PKGCONFIG_DESCRIPTION = Deepin Tool Kit UI Module
+ QMAKE_PKGCONFIG_INCDIR = $$includes.path
++QMAKE_PKGCONFIG_REQUIRES += dtkbase dtkutil
+ 
+ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../dbase/release/ -ldtkbase
+ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../dbase/debug/ -ldtkbase
