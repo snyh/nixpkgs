@@ -1,5 +1,5 @@
 { stdenv, fetchFromGitHub,
-  qt5, pkgconfig, cmake, libpthreadstubs,
+  qt5, pkgconfig, cmake, libpthreadstubs, gtk2,
   deepin-tool-kit, dde-qt5integration, libXdmcp,
 }:
 
@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake pkgconfig ];
   buildInputs = [
-    qt5.qttools qt5.qtbase qt5.qtmultimedia qt5.qtx11extras qt5.qtwebkit
+    qt5.qttools qt5.qtbase qt5.qtmultimedia qt5.qtx11extras qt5.qtwebkit qt5.qtwebchannel gtk2
     libXdmcp libpthreadstubs
     deepin-tool-kit dde-qt5integration
   ];

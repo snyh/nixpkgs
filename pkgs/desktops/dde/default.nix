@@ -55,6 +55,7 @@ rec {
 
   deepin-appstore = callPackage ./deepin-appstore.nix {
     libpthreadstubs = pkgs.xorg.libpthreadstubs;
+    gtk2 = pkgs.gtk2-x11;
   };
 
   dtksettings = callPackage ./dtksettings.nix {};
